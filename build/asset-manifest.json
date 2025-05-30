@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/RachieCodes/RachieCodes.github.io/static/css/main.a08c750e.css",
+    "main.js": "/RachieCodes/RachieCodes.github.io/static/js/main.534c989a.js",
+    "index.html": "/RachieCodes/RachieCodes.github.io/index.html",
+    "main.a08c750e.css.map": "/RachieCodes/RachieCodes.github.io/static/css/main.a08c750e.css.map",
+    "main.534c989a.js.map": "/RachieCodes/RachieCodes.github.io/static/js/main.534c989a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a08c750e.css",
+    "static/js/main.534c989a.js"
+  ]
+}
