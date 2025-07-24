@@ -1,0 +1,1 @@
+When I first set out to build my portfolio, I had more questions than code. How should it look? What should it say? So I tossed convention aside and started with one goal: make something I’d be proud to show. It's far from perfect but I am proud of my work.
