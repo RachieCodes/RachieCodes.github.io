@@ -35,7 +35,7 @@ root.render(
           </main>
           <footer className="pipboy-footer" aria-label="Site Footer">
             <hr className="footer-divider" />
-            <nav aria-label="Social links">
+            <div className="social-links" aria-label="Social links">
               <ul className="footer-icons-row">
                 <li>
                   <a
@@ -82,7 +82,7 @@ root.render(
                   </a>
                 </li>
               </ul>
-            </nav>
+            </div>
             <div className="footer-text">
               <p>© 2025 Rachie Codes. Stay upgraded.</p>
             </div>

@@ -40,6 +40,13 @@ footer {
   margin: 0 0 1rem 0;
   opacity: 0.4;
 }
+.social-links {
+  /* Style for the container that replaced the nav */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .footer-icons-row {
   display: flex;
   justify-content: center;

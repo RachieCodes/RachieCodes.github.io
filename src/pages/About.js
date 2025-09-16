@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
-import vaultboy from "../assets/avatar.png";
-import "../css/About.css"
+import vaultboy from "../assets/stylized_photo.jpg";
+import "../css/About.css";
 
 const skills = [
   {
@@ -35,53 +35,53 @@ const About = () => {
   const [selected, setSelected] = useState(0);
 
   return (
-    <div className="pipboy-about-main">
-      <div className="pipboy-about-grid">
-        <div className="pipboy-about-left">
-          <div className="pipboy-name-bar">Name: Rachel Johnson</div>
-          <ul className="pipboy-skill-list">
-            {skills.map((skill, i) => (
-              <React.Fragment key={skill.name + i}>
-                <li
-                  className={selected === i ? "selected" : ""}
+    <div className="pipboy-container">
+      <div className="noise-overlay"></div>
+      <div className="pipboy-crt-overlay pipboy-flicker"></div>
+      <div className="pipboy-content">
+        <div className="pipboy-left-panel">
+          <div className="pipboy-name-bar">
+            Name: Rachel Johnson
+          </div>
+          
+          <div className="pipboy-menu-container">
+            <div className="pipboy-menu">
+              {skills.map((skill, i) => (
+                <div 
+                  key={skill.name + i}
+                  className={`pipboy-menu-item ${selected === i ? 'selected' : ''}`}
                   onClick={() => setSelected(i)}
                   tabIndex={0}
                   onKeyDown={e => (e.key === "Enter" || e.key === " ") && setSelected(i)}
                   role="button"
                   aria-pressed={selected === i}
                 >
-                  <span className="pipboy-skill-name">{skill.name}</span>
-                </li>
-                {/* Accordion content directly under the selected topic on mobile */}
-                {selected === i && (
-                  <div className="pipboy-skill-accordion">
-                    <div className="pipboy-skill-accordion-content">
-                      <img
-                        src={skill.img}
-                        alt={skill.name}
-                        className="vaultboy-img"
-                      />
-                      <div className="pipboy-skill-detail">
-                        <h2>{skill.name}</h2>
-                        <p>{skill.desc}</p>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </React.Fragment>
-            ))}
-        </ul>
+                  {skill.name}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-        {/* Desktop right panel */}
-        <div className="pipboy-about-right">
-          <img
-            src={skills[selected].img || vaultboy}
-            alt={skills[selected].name}
-            className="vaultboy-img"
-          />
-          <div className="pipboy-skill-detail">
-            <h2>{skills[selected].name}</h2>
-            <p>{skills[selected].desc}</p>
+        
+        <div className="pipboy-right-panel">
+          <div className="pipboy-profile-image">
+            <img 
+              src={skills[selected].img || vaultboy}
+              alt="Profile" 
+              className="profile-img"
+            />
+            <div className="image-corner top-right"></div>
+            <div className="image-corner bottom-left"></div>
+          </div>
+          
+          <div className="pipboy-detail-container">
+            <div className="pipboy-detail-header">
+              <h2>{skills[selected].name}</h2>
+            </div>
+            
+            <div className="pipboy-detail-content">
+              <p>{skills[selected].desc}</p>
+            </div>
           </div>
         </div>
       </div>
