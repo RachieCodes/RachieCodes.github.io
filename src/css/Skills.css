@@ -1,0 +1,177 @@
+.skills-map-container {
+  position: relative;
+  width: 100%;
+  height: -webkit-fill-available;
+  margin: 2rem auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 30px  var(--primary-color);
+}
+
+.skills-map-bg {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+     var(--primary-color, #ffd52c) 0px,
+     var(--primary-color, #ffd52c) 1px,
+    transparent 1px,
+    transparent 8px
+  ), 
+  radial-gradient(ellipse at center, #ffd52c22 100%, #ffd52c11 40%, #111 100%);
+  opacity: 0.18;
+  z-index: 1;
+}
+
+.skills-map-point {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.skills-map-icon {
+  font-size: 2.2rem;
+  color:  var(--primary-color);
+  text-shadow: 0 0 8px var(--primary-color), 0 0 2px #fff;
+  filter: brightness(1.2);
+}
+
+.skills-map-label {
+  margin-top: 0.3rem;
+  font-size: 1rem;
+  color:  var(--primary-color);
+  text-shadow: 0 0 4px  var(--primary-color);
+  font-family: 'Share Tech Mono', monospace;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.pipboy-blog-main {
+  display: block;
+  width: 100%;
+  max-width: none;
+  margin: 2rem 0 0 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-height: 70vh;
+  background: none;
+  gap: 0;
+}
+
+.pipboy-blog-list-post {
+  width: 96%;
+  margin: 2rem auto 0 auto;
+  background: none;
+  border: 2px solid var(--primary-color, #ffd52c);
+  border-radius: 10px;
+  padding: 1.5rem 1.2rem 1.5rem 1.2rem;
+  box-sizing: border-box;
+  box-shadow: 0 0 18px #ffd52c33;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  font-family: "VT323", monospace;
+  color: var(--primary-color, #ffd52c);
+  position: relative;
+  transition: box-shadow 0.2s, border 0.2s;
+}
+
+.pipboy-blog-list-title {
+  font-size: 1.5rem;
+  color: var(--primary-color, #ffd52c);
+  font-family: 'Share Tech Mono', monospace;
+  font-weight: bold;
+  margin-bottom: 0.4rem;
+  text-decoration: underline;
+  cursor: pointer;
+  line-height: 1.2;
+  word-break: break-word;
+  text-shadow: 0 0 8px var(--primary-color, #ffd52c);
+  transition: color 0.2s;
+}
+
+.pipboy-blog-list-title:hover {
+  color: var(--secondary-color, #ff5c00);
+}
+
+.pipboy-blog-list-meta {
+  font-size: 1.1rem;
+  color: #ffd52c99;
+  margin-bottom: 0.5rem;
+  font-family: 'Share Tech Mono', monospace;
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  opacity: 0.85;
+}
+
+.pipboy-blog-list-excerpt {
+  font-size: 1.18rem;
+  color: var(--primary-color, #ffd52c);
+  font-family: 'VT323', monospace;
+  margin-bottom: 0.2rem;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.pipboy-blog-audio {
+  margin-top: 0.7rem;
+  margin-bottom: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pipboy-audio-btn {
+  background: transparent;
+  border: 1.5px solid var(--primary-color, #ffd52c);
+  color: var(--primary-color, #ffd52c);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  padding: 0.4em 0;
+  cursor: pointer;
+  text-shadow: 0 0 8px var(--primary-color, #ffd52c);
+  transition: background 0.2s, color 0.2s;
+}
+
+.pipboy-blog-list-post ul,
+.pipboy-blog-list-post ol {
+  padding-left: 1.5em;
+  margin-left: 0;
+  box-sizing: border-box;
+  list-style-position: inside;
+}
+
+.pipboy-blog-list-post li {
+  word-break: break-word;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+@media (max-width: 700px) {
+  .pipboy-blog-main {
+    max-width: 100vw;
+    padding: 0 0.5rem;
+    gap: 1rem;
+  }
+  .pipboy-blog-list-post {
+    width: 99%;
+    padding: 1rem 0.5rem;
+    margin: 1.2rem auto 0 auto;
+    border-radius: 8px;
+  }
+  .pipboy-blog-list-title {
+    font-size: 1.15rem;
+  }
+  .pipboy-blog-list-meta {
+    font-size: 0.98rem;
+  }
+  .pipboy-blog-list-excerpt {
+    font-size: 1rem;
+  }
+}

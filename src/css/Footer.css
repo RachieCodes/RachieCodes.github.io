@@ -1,0 +1,73 @@
+footer {
+   grid-row: 3;
+   width: 100%;
+   text-align: left;
+   padding: 0.5rem 0 0.5rem 1rem;
+   position: relative;
+   background: transparent;
+   color: var(--primary-color);
+   font-family: 'Share Tech Mono', 'VT323', monospace;
+}
+
+.pipboy-footer {
+  margin-top: 2rem;
+  padding: 1.5rem 0 0.5rem 0;
+  background: transparent;
+  color: var(--primary-color);
+  text-align: center;
+  font-family: 'Share Tech Mono', 'VT323', monospace;
+  position: relative;
+}
+.pipboy-footer::before {
+  content: "";
+  display: block;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    #ffd52c11 2px,
+    #ffd52c11 4px
+  );
+  opacity: 0.12;
+  z-index: 0;
+}
+.footer-divider {
+  border: none;
+  border-top: 2px solid #ffd52c;
+  margin: 0 0 1rem 0;
+  opacity: 0.4;
+}
+.footer-icons-row {
+  display: flex;
+  justify-content: center;
+  gap: 2.2rem;
+  margin-bottom: 0.7rem;
+  padding: 0;
+  list-style: none;
+}
+.fa-icon {
+  color: var(--primary-color);
+  font-size: 2rem;
+  transition: color 0.2s, text-shadow 0.2s, background 0.2s;
+  outline: none;
+  border-radius: 50%;
+  padding: 0.3rem;
+  background: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.fa-icon:focus,
+.fa-icon:hover {
+  color: #181a0b;
+  background: var(--primary-color);
+}
+.footer-text {
+  font-size: 1rem;
+  opacity: 0.85;
+  letter-spacing: 1px;
+  margin-top: 0.5rem;
+}

@@ -1,0 +1,177 @@
+div.retro-container {
+    width: 100vw;
+    height: 100vh;
+    min-height: 100vh;
+    min-width: 100vw;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    overflow: hidden;
+    padding: 0.5rem;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    mask-image: linear-gradient(to bottom, #0005 50%, #000 50%);
+    mask-size: 100% 2px;
+    text-shadow: 0 0 0.5rem;
+    box-sizing: border-box;
+}
+
+
+.pipboy-navbar {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  display: flex;
+  gap: 0.5rem;
+  font-family: "VT323", monospace;
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  z-index: 100;
+  background: none;
+  border: none;
+}
+
+.pipboy-navbar .nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+@media (max-width: 700px) {
+  .pipboy-navbar {
+    position: absolute;
+    right: 2rem;
+    justify-content: center;
+    font-size: 0.9rem;
+    padding: 0.5rem 0;
+  }
+  .pipboy-navbar .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+  }
+}
+
+.menu-btn,
+.mobile-nav {
+  display: none;
+}
+
+.desktop-nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+@media (max-width: 1205px) {
+  .desktop-nav {
+    display: none !important;
+  }
+  .menu-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-family: "VT323", monospace;
+    font-size: 1.2rem;
+    margin-left: auto;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    display: block;
+    margin-left: auto;
+  }
+  .dropdown-menu {
+    position: absolute;
+    top: 3rem;
+    right: 1rem;
+    background: #111;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    z-index: 200;
+    box-shadow: 0 2px 8px #000a;
+  }
+  .dropdown-menu .pipboy-nav-item {
+    display: block;
+    margin: 0.3rem 0;
+  }
+ 
+  .pipboy-mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000000;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 40px #ffd52c55 inset;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    padding: 2.5rem 1.5rem 1.5rem 1.5rem;
+    animation: slideIn 0.3s;
+    overflow-y: auto;
+  }
+  @keyframes slideIn {
+    from { right: -100vw; }
+    to { right: 0; }
+  }
+  .pipboy-mobile-menu .close-btn {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 2rem;
+    cursor: pointer;
+    margin-bottom: 2rem;
+  }
+
+  .pipboy-mobile-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .pipboy-mobile-menu li {
+    width: 90%;
+    text-align: center;
+  }
+  .pipboy-mobile-menu a {
+    display: block;
+    width: 100%;
+    background: none;
+    border-radius: 12px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.5rem;
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    text-align: center;
+    position: relative;
+  }
+  .pipboy-mobile-menu a.active,
+  .pipboy-mobile-menu a:hover {
+    color: var(--secondary-color);
+  }
+  .pipboy-mobile-menu .pipboy-nav-item {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    letter-spacing: 2px;
+    font-family: 'Share Tech Mono', monospace;
+  }
+}
+
+.animation-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--background-color, #111);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: all;
+}
