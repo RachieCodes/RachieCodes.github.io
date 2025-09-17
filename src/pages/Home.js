@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "../css/Navbar.css";
 import "../css/Homepage.css";
 import "../css/Footer.css";
+import "../css/TerminalAnimation.css";
 
 const typewriter = (text, speed, cb, done) => {
   let i = 0;
@@ -28,28 +29,41 @@ const Home = () => {
 
   const [statusText, setStatusText] = useState("");
   const [locationText, setLocationText] = useState("");
-  const [scanningPause, setScanningPause] = useState(false);
-
+  const [showSystemInfo, setShowSystemInfo] = useState(false);
+  const [showPrompt, setShowPrompt] = useState(false);
+  const [sessionId] = useState(() => {
+    // Generate random 8-character hex string
+    return Math.floor(Math.random() * 0xFFFFFFFF).toString(16).padStart(8, '0');
+  });
+  
   useEffect(() => {
     if (showAnimation) {
-      typewriter("LOADING", 80, setStatusText, () => {
-        setStatusLoaded(true);
-        setStatusText("ONLINE");
+      // First initialize the system
+      typewriter("Initializing system", 60, setStatusText, () => {
         setTimeout(() => {
-          typewriter("SCANNING...", 80, setLocationText, () => {
-            setScanningPause(true);
-            setTimeout(() => {
-              setScanningPause(false);
-              typewriter("Secure Terminal", 60, setLocationText, () => {
+          setStatusLoaded(true);
+          
+          // Then start connection process
+          setTimeout(() => {
+            typewriter("Establishing secure connection", 50, setLocationText, () => {
+              setTimeout(() => {
                 setLocationLoaded(true);
+                setShowSystemInfo(true);
+                
+                // Finally show a command prompt
                 setTimeout(() => {
-                  setShowAnimation(false);
-                  sessionStorage.setItem("AnimationSeen", "true");
-                }, 700);
-              });
-            }, 900);
-          });
-        }, 400);
+                  setShowPrompt(true);
+                  
+                  // Exit animation after showing prompt
+                  setTimeout(() => {
+                    setShowAnimation(false);
+                    sessionStorage.setItem("AnimationSeen", "true");
+                  }, 1800);
+                }, 1000);
+              }, 500);
+            });
+          }, 400);
+        }, 500);
       });
     }
   }, [showAnimation]);
@@ -58,51 +72,55 @@ const Home = () => {
     <div>
       {showAnimation && (
         <div className="animation-overlay">
-          <pre className="terminal cool-terminal">
-            <span className="terminal-line">
-              {`>`} Status:{" "}
-              <span className={statusLoaded ? "flicker" : ""}>
-                {!statusLoaded ? (
-                  <>
-                    {statusText}
-                    <span className="cursor-blink" />
-                  </>
-                ) : (
-                  <>
-                    ONLINE
-                    <span className="cursor-blink" />
-                  </>
-                )}
-              </span>
-            </span>
-            {"\n"}
-            <span className="terminal-line">
-              {`>`} Location:{" "}
-              <span className={locationLoaded ? "flicker" : ""}>
+          <div className="cool-terminal">
+            <div className="terminal-line">
+              <span>{`> Status: `}</span>
+              {!statusLoaded ? (
+                <>
+                  <span>{statusText}</span>
+                  <span className="loading-dots"></span>
+                  <span className="cursor-blink" />
+                </>
+              ) : (
+                <span className="flicker">ONLINE</span>
+              )}
+            </div>
+            
+            {statusLoaded && (
+              <div className="terminal-line">
+                <span>{`> Location: `}</span>
                 {!locationLoaded ? (
-                  statusLoaded ? (
-                    <>
-                      {locationText}
-                      <span className="cursor-blink" />
-                      {scanningPause && <span className="cursor-blink" />}
-                    </>
-                  ) : (
-                    ""
-                  )
-                ) : (
                   <>
-                    Secure Terminal
+                    <span>{locationText}</span>
+                    <span className="loading-dots"></span>
                     <span className="cursor-blink" />
                   </>
+                ) : (
+                  <span className="flicker">Secure Terminal</span>
                 )}
-              </span>
-            </span>
-          </pre>
+              </div>
+            )}
+            
+            {showSystemInfo && (
+              <div className="session-info">
+                <div className="terminal-line">
+                  <span>{`> Session ID: ${sessionId}`}</span>
+                </div>
+              </div>
+            )}
+            
+            {showPrompt && (
+              <div className="terminal-line" style={{ marginTop: "1rem" }}>
+                <span>{`> `}</span>
+                <span className="cursor-blink"></span>
+              </div>
+            )}
+          </div>
         </div>
       )}
 
       <div className="homepage" aria-hidden={showAnimation}>
-        <pre className="terminal">
+        <pre className="terminal simple-terminal">
 {`> Status: ONLINE
 > Location: Secure Terminal`}
         </pre>
