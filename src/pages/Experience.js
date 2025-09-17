@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../css/Experience.css";
 
+// Add skill levels that match Fallout's format
 const quests = [
   {
-    title: "Google UX Design Certificate",
+    title: "Google UX Design",
     description:
       "Completed the Google UX Design Professional Certificate in 2025, gaining skills in user research, wireframing, prototyping, and usability testing.",
     tasks: [
@@ -15,20 +17,18 @@ const quests = [
   {
     title: "Paycom",
     description:
-      "Worked from 2022-2025 as a Software Developer, focusing on frontend development and user experience on the company's website.",
+      "Software Developer (2022-2025) - Frontend development and UX specialist.",
     tasks: [
-      "Increased form conversions by 250% by designing and implementing a new dynamic multi-step form. Utilized: React.js, PHP, Wordpress, HTML, CSS, JavaScript, and Bootstrap.",
-      "Led an augmented reality project for the 2024 Paycom Codeathon. The project recieved an Gold Addy Award for Augmented Reality issued by American Advertising Awards Oklahoma 2025. Utilized: AR.Js, Three.js, Python (Demo version)",
-      "Revamped the Blog Layout, leading to a notable increase in content engagement and user interaction. Utilized: React.js, PHP, Wordpress, HTML, CSS, JavaScript, and Bootstrap.",
-      "A key contributor to content migration for multiple subdomains for regional segmentation. Utilized: React.js, PHP, Wordpress, HTML, CSS, JavaScript, SQL, and Bootstrap.",
-      "Developed custom WordPress blocks, taxonomies, metadata, and plugins to enhance website functionality and user experience. Utilized: PHP, WordPress, HTML, CSS, JavaScript, SQL, and Bootstrap.",
-      "Helped utilize containerization using Docker and Kubernetes to streamline development and deployment processes.",
-      "Identified errors, resolved bugs, and ensured responsive/accessible design across various devices and browsers.",
-      "Used Playwright and Jest for testing and debugging.",
+      "FORM CONV: +250% conversion rate improvement",
+      "AR PROJECT: Gold Addy Award winner (2025)",
+      "BLOG DESIGN: Enhanced user engagement metrics",
+      "MIGRATION: Managed regional content segmentation",
+      "WP DEV: Custom blocks and plugin development",
+      "DEVOPS: Docker/Kubernetes implementation",
     ],
   },
   {
-    title: "University of North Texas",
+    title: "UNT Computer Science",
     description:
       "Bachelor of Science in Computer Science, Minor in Mathematics, and Technical Writing Certificate.",
     tasks: [
@@ -44,11 +44,14 @@ const quests = [
 
 const Experience = () => {
   const [selected, setSelected] = useState(0);
+  const navigate = useNavigate();
 
   return (
     <div className="pipboy-main">
       <div className="pipboy-experience-grid">
+        {/* Left panel - Skills list with up/down arrows */}
         <div className="pipboy-quest-list">
+          
           {quests.map((quest, idx) => (
             <React.Fragment key={idx}>
               <div
@@ -58,10 +61,11 @@ const Experience = () => {
                 role="button"
                 aria-pressed={selected === idx}
                 onKeyDown={e => (e.key === "Enter" || e.key === " ") && setSelected(idx)}
+                style={{paddingLeft: selected === idx ? '2rem' : '1rem'}}
               >
-                {quest.title}
+                {quest.title} 
               </div>
-              {/* Accordion content directly under the selected topic on mobile */}
+              {/* Accordion content for mobile view */}
               {selected === idx && (
                 <div className="pipboy-quest-accordion">
                   <div className="pipboy-quest-desc">{quest.description}</div>
@@ -77,7 +81,8 @@ const Experience = () => {
             </React.Fragment>
           ))}
         </div>
-        {/* Desktop/tablet details panel */}
+        
+        {/* Right panel - Details with description */}
         <div className="pipboy-quest-details">
           <div className="pipboy-quest-desc">{quests[selected].description}</div>
           <div className="pipboy-quest-tasks">
@@ -86,6 +91,23 @@ const Experience = () => {
                 {task}
               </div>
             ))}
+          </div>
+        </div>
+        
+        {/* Fallout-style footer */}
+        <div className="pipboy-experience-footer">
+          <div className="pipboy-button">Status</div>
+          <div className="pipboy-button">S.P.E.C.I.A.L</div>
+          <div className="pipboy-nav-buttons">
+            <div 
+              className="pipboy-button selected"
+              onClick={() => navigate("/skills")}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && navigate("/skills")}
+            >Skills</div>
+            <div className="pipboy-button">Perks</div>
+            <div className="pipboy-button">General</div>
           </div>
         </div>
       </div>

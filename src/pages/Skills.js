@@ -6,7 +6,7 @@ const skills = [
     name: "React",
     icon: <i className="fab fa-react"></i>,
     top: "28%",
-    left: "62%",
+    left: "68%",
   },
   {
     name: "JavaScript",
@@ -83,7 +83,7 @@ const skills = [
   {
     name: "Japanese",
     icon: <i className="fa-solid fa-language"></i>,
-    top: "70%",
+    top: "90%",
     left: "85%",
   },
   {

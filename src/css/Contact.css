@@ -97,7 +97,7 @@
 .pipboy-contact-form input,
 .pipboy-contact-form textarea {
   width: 100%;
-  background: #181a0b;
+  background: transparent;
   color: var(--primary-color);
   border: 1.5px solid var(--primary-color);
   border-radius: 6px;
@@ -117,7 +117,7 @@
 
 .pipboy-btn {
   position: relative;
-  background: #101a0b;
+  background: transparent;
   color: var(--primary-color);
   border: 2px solid var(--primary-color);
   border-radius: 8px;
