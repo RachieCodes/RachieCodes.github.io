@@ -107,7 +107,7 @@
 }
 
 .session-info {
-  color: rgba(240, 177, 67, 0.7);
+  color: var(--primary-color);
   font-size: 0.9em;
   margin-top: 1rem;
 }
