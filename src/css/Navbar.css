@@ -15,6 +15,14 @@ div.retro-container {
     box-sizing: border-box;
 }
 
+@media (max-width: 768px) {
+    div.retro-container {
+        padding-top: 2.5rem;
+        padding-left: 0.2rem;
+        padding-right: 0.2rem;
+    }
+}
+
 
 .pipboy-navbar {
   position: absolute;
@@ -51,8 +59,7 @@ div.retro-container {
   }
 }
 
-.menu-btn,
-.mobile-nav {
+.menu-btn {
   display: none;
 }
 
@@ -61,23 +68,58 @@ div.retro-container {
   gap: 0.5rem;
 }
 
+/* Nav item styling */
+.pipboy-nav-item {
+  position: relative;
+}
+
+.pipboy-nav-item a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.pipboy-nav-item a:hover, 
+.pipboy-nav-item a.active {
+  color: var(--secondary-color);
+  text-shadow: 0 0 8px var(--primary-color);
+}
+
 @media (max-width: 1205px) {
   .desktop-nav {
     display: none !important;
   }
+  
+  /* Adjust header spacing for menu button */
+  .pipboy-header {
+    margin-top: 0;
+  }
+  
   .menu-btn {
-    background: none;
-    border: none;
+    background: transparent;
+    border-bottom: 1px solid var(--primary-color);
     color: var(--primary-color);
     font-family: "VT323", monospace;
     font-size: 1.2rem;
-    margin-left: auto;
-    margin-right: 1rem;
-    margin-top: 1rem;
     cursor: pointer;
     display: block;
-    margin-left: auto;
+    padding: 0.5rem 1rem;
+    text-shadow: 0 0 5px var(--primary-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    text-align: right;
+    z-index: 90;
+    transition: opacity 0.3s ease;
   }
+  
+  .menu-btn.menu-hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
   .dropdown-menu {
     position: absolute;
     top: 3rem;
@@ -89,6 +131,7 @@ div.retro-container {
     z-index: 200;
     box-shadow: 0 2px 8px #000a;
   }
+  
   .dropdown-menu .pipboy-nav-item {
     display: block;
     margin: 0.3rem 0;
@@ -96,13 +139,13 @@ div.retro-container {
  
   .pipboy-mobile-menu {
     position: fixed;
-    top: 0;
+    top: 0; /* Start from the very top of the screen */
     right: 0;
     left: 0;
     bottom: 0;
     width: 100vw;
-    height: 100vh;
-    background: #000000;
+    height: 100vh; /* Full screen height */
+    background-color: #000000;
     border: 2px solid var(--primary-color);
     box-shadow: 0 0 40px #ffd52c55 inset;
     z-index: 1000;
@@ -112,10 +155,18 @@ div.retro-container {
     animation: slideIn 0.3s;
     overflow-y: auto;
   }
+  
   @keyframes slideIn {
-    from { right: -100vw; }
-    to { right: 0; }
+    from { 
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
+  
   .pipboy-mobile-menu .close-btn {
     align-self: flex-end;
     background: none;
@@ -124,6 +175,16 @@ div.retro-container {
     font-size: 2rem;
     cursor: pointer;
     margin-bottom: 2rem;
+    margin-right: 0.5rem;
+    margin-top: 0.3rem;
+    text-shadow: 0 0 5px var(--primary-color);
+    transition: all 0.2s ease;
+  }
+  
+  .pipboy-mobile-menu .close-btn:hover,
+  .pipboy-mobile-menu .close-btn:focus {
+    color: var(--secondary-color);
+    transform: scale(1.1);
   }
 
   .pipboy-mobile-menu ul {
@@ -135,11 +196,24 @@ div.retro-container {
     flex-direction: column;
     gap: 1.5rem;
     align-items: center;
+    max-height: calc(80vh - 2.5rem); /* Adjust for menu button */
+    overflow-y: auto;
   }
+  
   .pipboy-mobile-menu li {
     width: 90%;
     text-align: center;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    padding: 0.5rem;
   }
+  
+  .pipboy-mobile-menu li:hover {
+    border-color: var(--primary-color);
+    background-color: rgba(255, 213, 44, 0.1);
+  }
+  
   .pipboy-mobile-menu a {
     display: block;
     width: 100%;
@@ -149,19 +223,60 @@ div.retro-container {
     font-size: 1.5rem;
     text-decoration: none;
     letter-spacing: 2px;
-    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    transition: all 0.2s ease;
     text-align: center;
     position: relative;
+    padding: 0.5rem;
   }
+  
   .pipboy-mobile-menu a.active,
   .pipboy-mobile-menu a:hover {
     color: var(--secondary-color);
+    transform: scale(1.05);
+    text-shadow: 0 0 8px var(--primary-color);
   }
+  
   .pipboy-mobile-menu .pipboy-nav-item {
     font-size: 1.5rem;
     color: var(--primary-color);
     letter-spacing: 2px;
     font-family: 'Share Tech Mono', monospace;
+  }
+  
+  /* Adjustments for different mobile screen sizes */
+  @media (max-width: 480px) {
+    .pipboy-mobile-menu {
+      padding: 1rem;
+    }
+    .pipboy-mobile-menu a {
+      font-size: 1.3rem;
+    }
+    .pipboy-mobile-menu .pipboy-nav-item {
+      font-size: 1.3rem;
+    }
+    .pipboy-mobile-menu ul {
+      gap: 0.8rem;
+    }
+  }
+  
+  @media (max-height: 600px) {
+    .pipboy-mobile-menu {
+      padding: 0.8rem;
+    }
+    .pipboy-mobile-menu ul {
+      margin-top: 0.8rem;
+      gap: 0.5rem;
+    }
+    .pipboy-mobile-menu .close-btn {
+      margin-bottom: 0.8rem;
+    }
+    .pipboy-mobile-menu li {
+      padding: 0.3rem;
+    }
+    .pipboy-mobile-menu a {
+      padding: 0.3rem;
+      font-size: 1.2rem;
+    }
   }
 }
 

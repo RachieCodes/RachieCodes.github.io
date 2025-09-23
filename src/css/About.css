@@ -1,13 +1,12 @@
 .pipboy-container {
   width: 100%;
-  min-height: calc(100vh - 60px); /* Leave room for navbar */
+  min-height: calc(100vh - 60px);
   color: var(--primary-color);
   padding: 1rem;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  /* Leave room for navbar at the top */
   padding-top: 4rem;
   position: relative;
 }
@@ -457,7 +456,6 @@
   
   .pipboy-container {
     padding: 0.5rem;
-    padding-top: 5rem; /* Space for navbar */
     background-color: transparent;
     position: relative;
     min-height: 100vh;
