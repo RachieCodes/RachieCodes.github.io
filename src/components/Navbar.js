@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 const navItems = [
@@ -13,6 +13,33 @@ const navItems = [
 
 function Navbar() {
   const [open, setOpen] = useState(false);
+  
+  // Prevent body scrolling when the mobile menu is open
+  useEffect(() => {
+    if (open) {
+      // Save the current scroll position
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      document.body.style.top = `-${scrollY}px`;
+    } else {
+      // Restore scrolling when menu is closed
+      const scrollY = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.top = '';
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      }
+    }
+    
+    return () => {
+      // Cleanup function
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.top = '';
+    };
+  }, [open]);
 
   return (
     <header className="pipboy-header">
@@ -35,10 +62,9 @@ function Navbar() {
         </div>
         {/* Mobile menu button on the right */}
         <button
-          className="menu-btn mobile-nav"
+          className={`menu-btn ${open ? 'menu-hidden' : ''}`}
           aria-label="Open menu"
           onClick={() => setOpen((prev) => !prev)}
-          style={{ marginLeft: "auto" }}
         >
           [Menu]
         </button>

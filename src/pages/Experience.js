@@ -17,14 +17,14 @@ const quests = [
   {
     title: "Paycom",
     description:
-      "Software Developer (2022-2025) - Frontend development and UX specialist.",
+      "Software Developer (2022-2025) - Website/Frontend development.",
     tasks: [
-      "FORM CONV: +250% conversion rate improvement",
-      "AR PROJECT: Gold Addy Award winner (2025)",
-      "BLOG DESIGN: Enhanced user engagement metrics",
-      "MIGRATION: Managed regional content segmentation",
-      "WP DEV: Custom blocks and plugin development",
-      "DEVOPS: Docker/Kubernetes implementation",
+      "Multi-Step Form Project: +250% conversion rate",
+      "Augmented Reality Project: Led a project that won the American Advertising Awards Oklahoma Gold Addy Award (2025)",
+      "Blog Design: Revamped the blog design and enhanced user engagement metrics",
+      "Migration: Managed regional content segmentation",
+      "WP Dev: Developed custom WordPress blocks, taxonomies, metadata, and plugins to enhance website functionality and user experience",
+      "DevOps: Docker/Kubernetes container implementation",
     ],
   },
   {
@@ -91,23 +91,6 @@ const Experience = () => {
                 {task}
               </div>
             ))}
-          </div>
-        </div>
-        
-        {/* Fallout-style footer */}
-        <div className="pipboy-experience-footer">
-          <div className="pipboy-button">Status</div>
-          <div className="pipboy-button">S.P.E.C.I.A.L</div>
-          <div className="pipboy-nav-buttons">
-            <div 
-              className="pipboy-button selected"
-              onClick={() => navigate("/skills")}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && navigate("/skills")}
-            >Skills</div>
-            <div className="pipboy-button">Perks</div>
-            <div className="pipboy-button">General</div>
           </div>
         </div>
       </div>

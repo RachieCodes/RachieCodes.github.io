@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import blogPosts from "../components/blogPosts.js";
 import WavesurferPlayer from '@wavesurfer/react'
@@ -10,6 +11,8 @@ const BLOG_PATH = "/blogs/";
 
 const Blog = () => {
   const [contents, setContents] = useState([]);
+  const [firstParagraphs, setFirstParagraphs] = useState([]);
+  const navigate = useNavigate();
 
   const [wavesurfer, setWavesurfer] = useState(null)
   const [isPlaying, setIsPlaying] = useState(false)
@@ -35,6 +38,17 @@ const Blog = () => {
         })
       );
       setContents(all);
+      
+      // Extract first paragraphs for previews
+      const paragraphs = all.map(content => {
+        if (!content) return "";
+        // Get first paragraph (text up to the first blank line or first 150 chars)
+        const firstParagraph = content.split('\n\n')[0].trim();
+        return firstParagraph.length > 150 
+          ? firstParagraph.substring(0, 150) + "..." 
+          : firstParagraph;
+      });
+      setFirstParagraphs(paragraphs);
     };
     fetchAllMarkdown();
   }, []);
@@ -43,7 +57,12 @@ const Blog = () => {
     <div className="pipboy-blog-main">
       {blogPosts.map((blog, idx) => (
         <div className="pipboy-blog-list-post" key={idx}>
-          <div className="pipboy-blog-list-title">{blog.title}</div>
+          <div 
+            className="pipboy-blog-list-title" 
+            onClick={() => navigate(`/blog/${blog.slug}`)}
+          >
+            {blog.title}
+          </div>
           <div className="pipboy-blog-list-meta">
             {blog.date && (
               <>
@@ -76,11 +95,15 @@ const Blog = () => {
           ) : (
             <div className="pipboy-blog-list-excerpt">
               <ReactMarkdown>
-                {contents[idx]
-                  ? contents[idx].slice(0, 400) +
-                    (contents[idx].length > 400 ? "..." : "")
-                  : ""}
+                {firstParagraphs[idx] || ""}
               </ReactMarkdown>
+              <button
+                className="pipboy-audio-btn"
+                onClick={() => navigate(`/blog/${blog.slug}`)}
+                style={{ width: "100%", margin: "0.5rem 0" }}
+              >
+                READ MORE
+              </button>
             </div>
           )}
         </div>

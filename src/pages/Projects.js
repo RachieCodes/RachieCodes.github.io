@@ -5,7 +5,7 @@ const featuredProjects = [
    {
     id: 1,
     title: "The Girl on Pheta-3",
-    description: "A small interactive experience about sibling connection through games. Made for JADS 2025 Game Jam.",
+    description: "A small interactive experience about sibling connection through games. Won the JADS Game Jam 2025 and Best Audio Category.",
     technologies: ["Godot", "Blender", "GDScript", "Pixel Art"],
     liveUrl: "https://iriyams.itch.io/the-girl-on-pheta-3",
     featured: true

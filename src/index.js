@@ -7,6 +7,7 @@ import Experience from "./pages/Experience";
 import Projects from "./pages/Projects";
 import Skills from "./pages/Skills";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
 import Navbar from "./components/Navbar";
 import ProjectsArchive from './pages/ProjectsArchive';
@@ -30,6 +31,7 @@ root.render(
               <Route path="/projects/archive" element={<ProjectsArchive />} />
               <Route path="/skills" element={<Skills />} />
               <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:id" element={<BlogPost />} />
               <Route path="/contact" element={<Contact />} />
             </Routes>
           </main>
