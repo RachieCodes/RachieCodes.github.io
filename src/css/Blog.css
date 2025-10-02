@@ -1,12 +1,246 @@
+/* Individual Blog Post Styling */
+.pipboy-blog-post {
+  width: 100%;
+  margin: 0;
+  padding: 4rem 8rem;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--primary-color);
+  font-family: 'VT323', monospace;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.pipboy-back-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1rem;
+  border: 1px solid var(--primary-color);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  display: block;
+  margin-bottom: 3rem;
+  transition: background-color 0.2s, color 0.2s;
+  width: fit-content;
+}
+
+.pipboy-back-link:hover {
+  background-color: var(--primary-color);
+  color: #000;
+}
+
+.pipboy-blog-post-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  color: var(--primary-color);
+  font-family: 'Share Tech Mono', monospace;
+  text-shadow: 0 0 15px rgba(255, 213, 44, 0.8);
+  margin: 0 0 3rem 0;
+  line-height: 1.2;
+  border-bottom: 3px solid var(--primary-color);
+  padding-bottom: 2rem;
+  width: 100%;
+  text-align: center;
+}
+
+.pipboy-blog-post-meta {
+  margin: 0 0 4rem 0;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid rgba(255, 213, 44, 0.3);
+  width: 100%;
+  text-align: center;
+}
+
+.pipboy-blog-post-date {
+  font-size: 1.1rem;
+  color: rgba(255, 213, 44, 0.8);
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.pipboy-blog-post-content {
+  line-height: 1.9;
+  font-size: 1.2rem;
+  width: 100%;
+  margin: 0;
+  text-align: left;
+}
+
+/* Markdown Content Styling */
+.pipboy-blog-post-content h1 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  font-family: 'Share Tech Mono', monospace;
+  text-shadow: 0 0 8px rgba(255, 213, 44, 0.5);
+  margin: 2rem 0 1rem 0;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+}
+
+.pipboy-blog-post-content h2 {
+  font-size: 1.6rem;
+  color: var(--primary-color);
+  font-family: 'Share Tech Mono', monospace;
+  text-shadow: 0 0 6px rgba(255, 213, 44, 0.4);
+  margin: 1.5rem 0 0.8rem 0;
+  border-left: 4px solid var(--primary-color);
+  padding-left: 1rem;
+}
+
+.pipboy-blog-post-content h3 {
+  font-size: 1.3rem;
+  color: var(--primary-color);
+  font-family: 'Share Tech Mono', monospace;
+  margin: 1.2rem 0 0.6rem 0;
+  text-shadow: 0 0 4px rgba(255, 213, 44, 0.3);
+}
+
+.pipboy-blog-post-content p {
+  margin: 1.5rem 0;
+  color: var(--primary-color);
+  font-family: 'VT323', monospace;
+  font-size: 1.2rem;
+  line-height: 1.9;
+  width: 100%;
+}
+
+.pipboy-blog-post-content ul,
+.pipboy-blog-post-content ol {
+  margin: 1rem 0;
+  padding-left: 2rem;
+}
+
+.pipboy-blog-post-content li {
+  margin: 0.5rem 0;
+  color: var(--primary-color);
+  font-family: 'VT323', monospace;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.pipboy-blog-post-content blockquote {
+  border-left: 4px solid var(--primary-color);
+  padding-left: 1.5rem;
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  border-radius: 4px;
+  font-style: italic;
+}
+
+.pipboy-blog-post-content code {
+  border: 1px solid rgba(255, 213, 44, 0.3);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.9em;
+  color: var(--primary-color);
+}
+
+.pipboy-blog-post-content pre {
+  border: 1px solid var(--primary-color);
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.pipboy-blog-post-content pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 1rem;
+}
+
+.pipboy-blog-post-content strong {
+  color: var(--primary-color);
+  text-shadow: 0 0 4px rgba(255, 213, 44, 0.4);
+  font-weight: bold;
+}
+
+.pipboy-blog-post-content em {
+  color: rgba(255, 213, 44, 0.9);
+  font-style: italic;
+}
+
+.pipboy-blog-post-content a {
+  color: var(--secondary-color, #ff5c00);
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.pipboy-blog-post-content a:hover {
+  color: var(--primary-color);
+  text-shadow: 0 0 4px rgba(255, 213, 44, 0.6);
+}
+
+.pipboy-loading {
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  font-family: 'Share Tech Mono', monospace;
+  padding: 2rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* Mobile optimizations for blog posts */
+@media (max-width: 768px) {
+  .pipboy-blog-post {
+    padding: 2rem 1.5rem;
+    width: 100%;
+    min-height: 100vh;
+  }
+  
+  .pipboy-blog-post-title {
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .pipboy-blog-post-content {
+    font-size: 1.3rem;
+  }
+  
+  .pipboy-blog-post-meta {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .pipboy-back-link {
+    margin-bottom: 2rem;
+  }
+  
+  .pipboy-blog-post-content p {
+    font-size: 1.3rem;
+    margin: 1rem 0;
+  }
+  
+  .pipboy-blog-post-content h1 {
+    font-size: 1.8rem;
+  }
+  
+  .pipboy-blog-post-content h2 {
+    font-size: 1.5rem;
+  }
+  
+  .pipboy-blog-post-content h3 {
+    font-size: 1.3rem;
+  }
+}
+
+/* Blog List Styles */
 .pipboy-blog-main {
   display: block;
-  width: 100%;
+  width: 100vw;
   max-width: none;
-  margin: 2rem 0 0 0;
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
-  min-height: 70vh;
-  background: none;
+  min-height: 100vh;
   gap: 0;
 }
 
@@ -135,8 +369,7 @@
 
 /* Individual blog post styles */
 .pipboy-blog-post {
-  width: 96%;
-  max-width: 800px;
+  width: 90%;
   margin: 1rem auto 2rem auto;
   background: none;
   border: 2px solid var(--primary-color, #ffd52c);

@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import AnimatedText from "../components/AnimatedText";
 import "../css/Navbar.css";
 import "../css/Homepage.css";
 import "../css/Footer.css";
 import "../css/TerminalAnimation.css";
+import "../css/UniversalButtons.css";
 
 const typewriter = (text, speed, cb, done) => {
   let i = 0;
@@ -26,6 +28,7 @@ const Home = () => {
   const [showAnimation, setShowAnimation] = useState(() => {
     return !sessionStorage.getItem("AnimationSeen");
   });
+  const [hoveredButton, setHoveredButton] = useState(null);
 
   const [statusText, setStatusText] = useState("");
   const [locationText, setLocationText] = useState("");
@@ -132,15 +135,28 @@ const Home = () => {
             <a
               href="Rachel_Johnson_Resume.pdf"
               aria-label="Download My Resume"
-              className="cv-btn"
+              className="btn-primary"
               download
               target="_blank"
               rel="noopener noreferrer"
+              onMouseEnter={() => setHoveredButton('download')}
+              onMouseLeave={() => setHoveredButton(null)}
             >
-              [ Download CV ]
+              <AnimatedText 
+                text="[ Download CV ]" 
+                isHovered={hoveredButton === 'download'}
+              />
             </a>
-            <Link to="/contact" className="contact-btn">
-              [ Contact Me ]
+            <Link 
+              to="/contact" 
+              className="btn-primary"
+              onMouseEnter={() => setHoveredButton('contact')}
+              onMouseLeave={() => setHoveredButton(null)}
+            >
+              <AnimatedText 
+                text="[ Contact Me ]" 
+                isHovered={hoveredButton === 'contact'}
+              />
             </Link>
           </div>
         </div>

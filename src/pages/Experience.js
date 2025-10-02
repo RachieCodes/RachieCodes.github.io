@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../css/About.css";
 import "../css/Experience.css";
 
 // Add skill levels that match Fallout's format
@@ -17,14 +18,16 @@ const quests = [
   {
     title: "Paycom",
     description:
-      "Software Developer (2022-2025) - Website/Frontend development.",
+      "Worked from 2022-2025 as a Software Developer, focusing on frontend development and user experience on the company's website.",
     tasks: [
-      "Multi-Step Form Project: +250% conversion rate",
-      "Augmented Reality Project: Led a project that won the American Advertising Awards Oklahoma Gold Addy Award (2025)",
-      "Blog Design: Revamped the blog design and enhanced user engagement metrics",
-      "Migration: Managed regional content segmentation",
-      "WP Dev: Developed custom WordPress blocks, taxonomies, metadata, and plugins to enhance website functionality and user experience",
-      "DevOps: Docker/Kubernetes container implementation",
+      "Increased form conversions by 250% by designing and implementing a new dynamic multi-step form. Utilized: React.js, PHP, Wordpress, HTML, CSS, JavaScript, and Bootstrap.",
+      "Led an augmented reality project for the 2024 Paycom Codeathon. The project recieved an Gold Addy Award for Augmented Reality issued by American Advertising Awards Oklahoma 2025. Utilized: AR.Js, Three.js, Python (Demo version)",
+      "Revamped the Blog Layout, leading to a notable increase in content engagement and user interaction. Utilized: React.js, PHP, Wordpress, HTML, CSS, JavaScript, and Bootstrap.",
+      "A key contributor to content migration for multiple subdomains for regional segmentation. Utilized: React.js, PHP, Wordpress, HTML, CSS, JavaScript, SQL, and Bootstrap.",
+      "Developed custom WordPress blocks, taxonomies, metadata, and plugins to enhance website functionality and user experience. Utilized: PHP, WordPress, HTML, CSS, JavaScript, SQL, and Bootstrap.",
+      "Helped utilize containerization using Docker and Kubernetes to streamline development and deployment processes.",
+      "Identified errors, resolved bugs, and ensured responsive/accessible design across various devices and browsers.",
+      "Used Playwright and Jest for testing and debugging.",
     ],
   },
   {
@@ -47,7 +50,9 @@ const Experience = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="pipboy-main">
+    <div className="pipboy-container">
+      <div className="noise-overlay"></div>
+      <div className="pipboy-crt-overlay pipboy-flicker"></div>
       <div className="pipboy-experience-grid">
         {/* Left panel - Skills list with up/down arrows */}
         <div className="pipboy-quest-list">

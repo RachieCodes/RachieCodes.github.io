@@ -1,8 +1,12 @@
+import { useState } from "react";
 import { useForm, ValidationError } from '@formspree/react';
+import AnimatedText from "../components/AnimatedText";
 import "../css/Contact.css";
+import "../css/UniversalButtons.css";
 
 const Contact = () => {
   const [state, handleSubmit] = useForm("manjrwyl");
+  const [hoveredButton, setHoveredButton] = useState(null);
 
   return (
     <div className="pipboy-main contact-main">
@@ -41,9 +45,17 @@ const Contact = () => {
               <textarea name="message" rows={4} required />
               <ValidationError prefix="Message" field="message" errors={state.errors} />
             </label>
-            <button type="submit" className="pipboy-btn" disabled={state.submitting}>
-              <span className="pipboy-btn-glow"></span>
-              <span>Send Transmission</span>
+            <button 
+              type="submit" 
+              className="btn-primary" 
+              disabled={state.submitting}
+              onMouseEnter={() => setHoveredButton('submit')}
+              onMouseLeave={() => setHoveredButton(null)}
+            >
+              <AnimatedText 
+                text="[ Send Transmission ]" 
+                isHovered={hoveredButton === 'submit' && !state.submitting}
+              />
             </button>
             <ValidationError errors={state.errors} />
           </form>

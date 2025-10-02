@@ -1,0 +1,50 @@
+/* Universal Button Styles */
+.btn-primary {
+  font-family: "VT323", monospace;
+  font-size: 1.1rem;
+  padding: 13px 30px;
+  border-radius: .25rem;
+  color: var(--primary-color);
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  text-shadow: 0 0 6px var(--primary-color);
+  box-shadow: 0 0 8px 2px #ffd52c44;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  letter-spacing: 2px;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-primary:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.btn-primary:hover {
+  background: var(--primary-color);
+  color: #181a0b;
+  box-shadow: 0 0 16px var(--primary-color);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary:disabled:hover {
+  background: transparent;
+  color: var(--primary-color);
+  box-shadow: 0 0 8px 2px #ffd52c44;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .btn-primary {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    justify-content: center;
+  }
+}

@@ -78,3 +78,10 @@ footer {
   letter-spacing: 1px;
   margin-top: 0.5rem;
 }
+
+@media (max-width: 375px) {
+  .stay-upgraded {
+    display: block;
+    margin-top: 0.5rem;
+  }
+}

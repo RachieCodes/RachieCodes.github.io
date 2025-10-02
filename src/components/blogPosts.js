@@ -11,6 +11,13 @@ const createSlug = (title) => {
 
 const blogPosts = [
   {
+    title: "Why Every Developer Needs a Side Quest",
+    date: "10-02-2025",
+    file: "developer-side-quests.md",
+    audio: null,
+    slug: "developer-side-quests",
+  },
+  {
     title: "Ramblings of a Dev - Portfolio Launch",
     date: "07-08-2025",
     file: "firstBlog.md",
@@ -23,7 +30,6 @@ const blogPosts = [
     audio: radioSilence,
     slug: "radio-silence-alice-oseman",
   },
-  // Add more posts...
 ];
 
 export default blogPosts;

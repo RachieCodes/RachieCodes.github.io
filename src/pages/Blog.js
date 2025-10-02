@@ -3,7 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import blogPosts from "../components/blogPosts.js";
 import WavesurferPlayer from '@wavesurfer/react'
+import AnimatedText from "../components/AnimatedText";
 import "../css/Blog.css"
+import "../css/UniversalButtons.css";
 
 
 const BLOG_PATH = "/blogs/";
@@ -12,6 +14,7 @@ const BLOG_PATH = "/blogs/";
 const Blog = () => {
   const [contents, setContents] = useState([]);
   const [firstParagraphs, setFirstParagraphs] = useState([]);
+  const [hoveredButton, setHoveredButton] = useState(null);
   const navigate = useNavigate();
 
   const [wavesurfer, setWavesurfer] = useState(null)
@@ -85,11 +88,16 @@ const Blog = () => {
               />
             </div>
             <button
-              className="pipboy-audio-btn"
+              className="btn-primary"
               onClick={onPlayPause}
               style={{ width: "100%", margin: "0.5rem 0" }}
+              onMouseEnter={() => setHoveredButton(`play-${idx}`)}
+              onMouseLeave={() => setHoveredButton(null)}
             >
-              {isPlaying ? 'Pause' : 'Play'}
+              <AnimatedText 
+                text={isPlaying ? '[ Pause ]' : '[ Play ]'} 
+                isHovered={hoveredButton === `play-${idx}`}
+              />
             </button>
           </div>
           ) : (
@@ -98,11 +106,16 @@ const Blog = () => {
                 {firstParagraphs[idx] || ""}
               </ReactMarkdown>
               <button
-                className="pipboy-audio-btn"
+                className="btn-primary"
                 onClick={() => navigate(`/blog/${blog.slug}`)}
                 style={{ width: "100%", margin: "0.5rem 0" }}
+                onMouseEnter={() => setHoveredButton(`read-${idx}`)}
+                onMouseLeave={() => setHoveredButton(null)}
               >
-                READ MORE
+                <AnimatedText 
+                  text="[ READ MORE ]" 
+                  isHovered={hoveredButton === `read-${idx}`}
+                />
               </button>
             </div>
           )}

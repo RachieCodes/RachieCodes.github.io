@@ -3,7 +3,9 @@ import { useParams, Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import blogPosts from "../components/blogPosts.js";
 import WavesurferPlayer from '@wavesurfer/react';
+import AnimatedText from "../components/AnimatedText";
 import "../css/Blog.css";
+import "../css/UniversalButtons.css";
 
 const BLOG_PATH = "/blogs/";
 
@@ -13,6 +15,7 @@ const BlogPost = () => {
   
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(true);
+  const [hoveredButton, setHoveredButton] = useState(null);
   const [wavesurfer, setWavesurfer] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -84,11 +87,16 @@ const BlogPost = () => {
               />
             </div>
             <button
-              className="pipboy-audio-btn"
+              className="btn-primary"
               onClick={onPlayPause}
               style={{ width: "100%", margin: "0.5rem 0" }}
+              onMouseEnter={() => setHoveredButton('play')}
+              onMouseLeave={() => setHoveredButton(null)}
             >
-              {isPlaying ? 'Pause' : 'Play'}
+              <AnimatedText 
+                text={isPlaying ? '[ Pause ]' : '[ Play ]'} 
+                isHovered={hoveredButton === 'play'}
+              />
             </button>
           </div>
         ) : (

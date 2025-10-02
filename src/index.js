@@ -64,17 +64,6 @@ root.render(
                 <li>
                   <a
                     className="fa-icon"
-                    href="https://www.instagram.com/rachieions/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Instagram"
-                  >
-                    <i className="fab fa-instagram" aria-hidden="true"></i>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="fa-icon"
                     href="mailto:RachieCodes@outlook.com"
                     aria-label="Email"
                   >
@@ -86,7 +75,7 @@ root.render(
               </ul>
             </div>
             <div className="footer-text">
-              <p>© 2025 Rachie Codes. Stay upgraded.</p>
+              <p>© 2025 Rachie Codes. <span className="stay-upgraded">Stay upgraded.</span></p>
             </div>
           </footer>
         </div>
