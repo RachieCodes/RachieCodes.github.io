@@ -25,6 +25,33 @@ const allProjects = [
       { name: "Pixel Art", purpose: "Visual Design" }
     ], 
     link: "https://iriyams.itch.io/the-girl-on-pheta-3" 
+  },
+  { 
+    year: 2024, 
+    title: "Paycom Blog Redesign", 
+    type: "Company Project", 
+    tech: [
+      { name: "Wordpress", purpose: "Content Management System" },
+      { name: "PHP", purpose: "Server-side Scripting" },
+      { name: "Javascript", purpose: "Interactive Features" },
+      { name: "CSS", purpose: "Styling & Layout" },
+      { name: "HTML", purpose: "Visual Structure" }
+    ], 
+    link: "https://www.paycom.com/resources/blog/workforce-management-software-features/" 
+  },
+  { 
+    year: 2024, 
+    title: "Paycom Demo Form", 
+    type: "Company Project", 
+    tech: [
+      { name: "Wordpress", purpose: "Content Management System" },
+      { name: "PHP", purpose: "Server-side Scripting" },
+      { name: "Javascript", purpose: "Interactive Features" },
+      { name: "CSS", purpose: "Styling & Layout" },
+      { name: "HTML", purpose: "Visual Structure" },
+      { name: "SQL", purpose: "Database Management" }
+    ], 
+    link: "https://www.paycom.com/demo/" 
   }
 ];
 

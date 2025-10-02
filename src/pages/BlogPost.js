@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import blogPosts from "../components/blogPosts.js";
 import WavesurferPlayer from '@wavesurfer/react';
@@ -11,6 +11,7 @@ const BLOG_PATH = "/blogs/";
 
 const BlogPost = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const post = blogPosts.find(post => post.slug === id);
   
   const [content, setContent] = useState("");
@@ -52,9 +53,18 @@ const BlogPost = () => {
       <div className="pipboy-blog-main">
         <div className="pipboy-blog-post">
           <h2>Blog post not found</h2>
-          <Link to="/blog" className="pipboy-back-link">
-            ← All Blogs
-          </Link>
+          <button 
+            className="btn-primary pipboy-back-link"
+            onClick={() => navigate('/blog')}
+            onMouseEnter={() => setHoveredButton('back-notfound')}
+            onMouseLeave={() => setHoveredButton(null)}
+            style={{ width: "fit-content" }}
+          >
+            <AnimatedText 
+              text="← ALL BLOGS" 
+              isHovered={hoveredButton === 'back-notfound'}
+            />
+          </button>
         </div>
       </div>
     );
@@ -63,9 +73,18 @@ const BlogPost = () => {
   return (
     <div className="pipboy-blog-main">
       <div className="pipboy-blog-post">
-        <Link to="/blog" className="pipboy-back-link">
-          ← All Blogs
-        </Link>
+        <button 
+          className="btn-primary pipboy-back-link"
+          onClick={() => navigate('/blog')}
+          onMouseEnter={() => setHoveredButton('back')}
+          onMouseLeave={() => setHoveredButton(null)}
+          style={{ width: "fit-content", marginBottom: "3rem" }}
+        >
+          <AnimatedText 
+            text="← ALL BLOGS" 
+            isHovered={hoveredButton === 'back'}
+          />
+        </button>
         
         <h1 className="pipboy-blog-post-title">{post.title}</h1>
         <div className="pipboy-blog-post-meta">
