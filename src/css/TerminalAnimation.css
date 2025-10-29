@@ -11,8 +11,8 @@
 .cool-terminal {
   background-color: transparent;
   padding: 2rem;
-  width: 90%;
-  max-width: 600px;
+  width: 95%;
+  max-width: 800px;
   font-family: 'VT323', monospace;
   color: var(--terminal-text);
   position: relative;
@@ -30,9 +30,11 @@
 
 .terminal-line {
   display: block;
-  margin-bottom: 1rem;
-  line-height: 1.4;
-  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.2;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  white-space: nowrap;
+  min-width: 0;
 }
 
 .cursor-blink {
@@ -110,6 +112,44 @@
   color: var(--primary-color);
   font-size: 0.9em;
   margin-top: 1rem;
+}
+
+.session-info .terminal-line {
+  font-size: clamp(0.8rem, 2.2vw, 0.95rem);
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .cool-terminal {
+    padding: 1.5rem;
+    width: 98%;
+    max-width: none;
+  }
+  
+  .terminal-line {
+    margin-bottom: 0.6rem;
+    font-size: clamp(0.85rem, 2.8vw, 1rem);
+    white-space: normal;
+    word-wrap: break-word;
+  }
+  
+  .session-info .terminal-line {
+    font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .cool-terminal {
+    padding: 1rem;
+    width: 99%;
+  }
+  
+  .terminal-line {
+    margin-bottom: 0.5rem;
+    font-size: clamp(0.8rem, 3vw, 0.95rem);
+    white-space: normal;
+    word-wrap: break-word;
+  }
 }
 
 @keyframes fadeIn {

@@ -103,15 +103,6 @@ const Home = () => {
                 )}
               </div>
             )}
-            
-            {showSystemInfo && (
-              <div className="session-info">
-                <div className="terminal-line">
-                  <span>{`> Session ID: ${sessionId}`}</span>
-                </div>
-              </div>
-            )}
-            
             {showPrompt && (
               <div className="terminal-line" style={{ marginTop: "1rem" }}>
                 <span>{`> `}</span>

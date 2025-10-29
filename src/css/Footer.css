@@ -10,8 +10,7 @@ footer {
 }
 
 .pipboy-footer {
-  margin-top: 2rem;
-  padding: 1.5rem 0 0.5rem 0;
+  padding: 0rem 0 0.5rem 0;
   background: transparent;
   color: var(--primary-color);
   text-align: center;
