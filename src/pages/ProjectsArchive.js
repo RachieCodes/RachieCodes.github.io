@@ -5,7 +5,7 @@ import "../css/ProjectsArchive.css";
 const allProjects = [
    { 
     year: 2025, 
-    title: "Comparring Pathing Algorithms", 
+    title: "Comparing Pathing Algorithms", 
     type: "Personal Project",
     status: "Completed",
     description: "Created an interactive comparison of pathfinding algorithms with real-time visualization",
