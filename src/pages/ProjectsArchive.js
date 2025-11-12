@@ -5,6 +5,15 @@ import "../css/ProjectsArchive.css";
 const allProjects = [
    { 
     year: 2025, 
+    title: "Comparring Pathing Algorithms", 
+    type: "Personal Project",
+    status: "Completed",
+    description: "Created an interactive comparison of pathfinding algorithms with real-time visualization",
+    tech: ["Python, HTML, CSS, Javascript"],
+    link: "https://www.rachiecodes.com/pathing-algorithms/" 
+  },
+   { 
+    year: 2025, 
     title: "Blog Aggregator", 
     type: "Personal Project",
     status: "Completed",
