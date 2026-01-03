@@ -75,7 +75,10 @@ root.render(
               </ul>
             </div>
             <div className="footer-text">
-              <p>© 2025 Rachie Codes. <span className="stay-upgraded">Stay upgraded.</span></p>
+              <p>
+                © {new Date().getFullYear()} Rachie Codes.{" "}
+                <span className="stay-upgraded">Stay upgraded.</span>
+              </p>
             </div>
           </footer>
         </div>
