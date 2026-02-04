@@ -22,16 +22,22 @@ const Blog = () => {
   const [hoveredButton, setHoveredButton] = useState(null);
   const navigate = useNavigate();
 
-  const [wavesurfer, setWavesurfer] = useState(null)
-  const [isPlaying, setIsPlaying] = useState(false)
+  const [wavesurfers, setWavesurfers] = useState({})
+  const [playingStates, setPlayingStates] = useState({})
 
-  const onReady = (ws) => {
-    setWavesurfer(ws)
-    setIsPlaying(false)
+  const onReady = (ws, postKey) => {
+    setWavesurfers(prev => ({
+      ...prev,
+      [postKey]: ws
+    }))
+    setPlayingStates(prev => ({
+      ...prev,
+      [postKey]: false
+    }))
   }
 
-  const onPlayPause = () => {
-    wavesurfer && wavesurfer.playPause()
+  const onPlayPause = (postKey) => {
+    wavesurfers[postKey] && wavesurfers[postKey].playPause()
   }
 
   useEffect(() => {
@@ -139,22 +145,22 @@ const Blog = () => {
                   height={60}
                   progressColor="#ffd52c"
                   url={blog.audio}
-                  onReady={onReady}
-                  onPlay={() => setIsPlaying(true)}
-                  onPause={() => setIsPlaying(false)}
+                  onReady={(ws) => onReady(ws, `audio-${idx}`)}
+                  onPlay={() => setPlayingStates(prev => ({ ...prev, [`audio-${idx}`]: true }))}
+                  onPause={() => setPlayingStates(prev => ({ ...prev, [`audio-${idx}`]: false }))}
                   width="100%"
                   responsive={true}
                 />
               </div>
               <button
                 className="btn-primary"
-                onClick={onPlayPause}
+                onClick={() => onPlayPause(`audio-${idx}`)}
                 style={{ width: "100%", margin: "0.5rem 0" }}
                 onMouseEnter={() => setHoveredButton(`play-${idx}`)}
                 onMouseLeave={() => setHoveredButton(null)}
               >
                 <AnimatedText 
-                  text={isPlaying ? '[ Pause ]' : '[ Play ]'} 
+                  text={playingStates[`audio-${idx}`] ? '[ Pause ]' : '[ Play ]'} 
                   isHovered={hoveredButton === `play-${idx}`}
                 />
               </button>
