@@ -4,7 +4,7 @@
     --primary-color: #ffd52c;
     --secondary-color: #ff5c00;
     --background-color: #111;
-    scrollbar-color: var(--primary-color) var(--secondary-color);
+    scrollbar-color: var(--primary-color) var(--background-color);
     font-size: clamp(18px, 3vw, 30px);
 }
 
@@ -26,6 +26,7 @@ body, html {
     background: var(--background-color);
     min-height: 100vh;
     overflow-x: hidden;
+    scrollbar-color: var(--primary-color) var(--background-color);
 }
 
 header {

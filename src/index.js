@@ -10,7 +10,6 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
 import Navbar from "./components/Navbar";
-import ProjectsArchive from './pages/ProjectsArchive';
 import "./App.css";
 
 const rootElement = document.getElementById("root");
@@ -28,7 +27,7 @@ root.render(
               <Route path="/about" element={<About />} />
               <Route path="/experience" element={<Experience />} />
               <Route path="/projects" element={<Projects />} />
-              <Route path="/projects/archive" element={<ProjectsArchive />} />
+              <Route path="/projects/archive" element={<Projects />} />
               <Route path="/skills" element={<Skills />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:id" element={<BlogPost />} />

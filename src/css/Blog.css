@@ -235,17 +235,19 @@
 /* Blog List Styles */
 .pipboy-blog-main {
   display: block;
-  width: 100vw;
-  max-width: none;
-  margin: 0;
-  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
   box-sizing: border-box;
   min-height: 100vh;
   gap: 0;
+  overflow-x: hidden;
 }
 
 .pipboy-blog-list-post {
-  width: 96%;
+  width: 100%;
+  max-width: none;
   margin: 2rem auto 0 auto;
   background: none;
   border: 2px solid var(--primary-color, #ffd52c);
@@ -369,41 +371,47 @@
 
 /* Individual blog post styles */
 .pipboy-blog-post {
-  width: 90%;
-  margin: 1rem auto 2rem auto;
-  background: none;
+  width: 100%;
+  max-width: none;
+  margin: 2rem auto;
+  background: rgba(17, 17, 17, 0.6);
   border: 2px solid var(--primary-color, #ffd52c);
-  border-radius: 10px;
-  padding: 2rem;
+  border-radius: 8px;
+  padding: 3rem 2.5rem;
   box-sizing: border-box;
-  box-shadow: 0 0 18px #ffd52c33;
+  box-shadow: 0 0 25px rgba(255, 213, 44, 0.15);
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
   font-family: "VT323", monospace;
   color: var(--primary-color, #ffd52c);
   position: relative;
+  line-height: 1.8;
 }
 
 .pipboy-blog-post-title {
-  font-size: 2rem;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
   color: var(--primary-color, #ffd52c);
   font-family: 'Share Tech Mono', monospace;
   font-weight: bold;
-  margin: 0.5rem 0;
-  line-height: 1.2;
+  margin: 0;
+  margin-bottom: 1rem;
+  line-height: 1.3;
   word-break: break-word;
-  text-shadow: 0 0 8px var(--primary-color, #ffd52c);
+  text-shadow: 0 0 12px var(--primary-color, #ffd52c);
 }
 
 .pipboy-blog-post-meta {
-  font-size: 1.1rem;
-  color: var(--primary-color, #ffd52c);
-  opacity: 0.8;
-  margin-bottom: 1rem;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  color: rgba(255, 213, 44, 0.8);
+  opacity: 1;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 213, 44, 0.2);
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 1rem;
+  font-style: italic;
 }
 
 .pipboy-blog-post-date {
@@ -411,9 +419,10 @@
 }
 
 .pipboy-blog-post-content {
-  font-size: 1.2rem;
-  line-height: 1.6;
+  font-size: clamp(1rem, 2.2vw, 1.15rem);
+  line-height: 1.9;
   word-break: break-word;
+  letter-spacing: 0.3px;
 }
 
 .pipboy-blog-post-content p {
@@ -440,4 +449,77 @@
   color: var(--primary-color, #ffd52c);
   margin: 2rem 0;
   text-align: center;
+}
+
+/* RSS and External Post Styles */
+.blog-loading {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: var(--primary-color, #ffd52c);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.2rem;
+}
+
+.blog-empty {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: var(--primary-color, #ffd52c);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.2rem;
+}
+
+.blog-post-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.external-badge {
+  font-size: 0.8rem;
+  color: var(--secondary-color, #ff5c00);
+  text-shadow: 0 0 4px var(--secondary-color, #ff5c00);
+  font-family: 'Share Tech Mono', monospace;
+  padding: 2px 6px;
+  border: 1px solid var(--secondary-color, #ff5c00);
+  border-radius: 3px;
+  display: inline-block;
+  margin-left: 0.5rem;
+}
+
+.external-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--secondary-color, #ff5c00);
+  text-decoration: none;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  border-bottom: 2px solid var(--secondary-color, #ff5c00);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-shadow: 0 0 8px var(--secondary-color, #ff5c00);
+}
+
+.external-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 92, 0, 0.2), transparent);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.external-link:hover {
+  color: var(--primary-color, #ffd52c);
+  border-bottom-color: var(--primary-color, #ffd52c);
+  text-shadow: 0 0 12px var(--secondary-color, #ff5c00), 0 0 8px var(--primary-color, #ffd52c);
+  transform: translateX(4px);
+}
+
+.external-link:hover::before {
+  left: 100%;
 }

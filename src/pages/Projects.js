@@ -1,113 +1,197 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import AnimatedText from "../components/AnimatedText";
 import "../css/Projects.css";
-import "../css/UniversalButtons.css";
-
-const featuredProjects = [
-   {
-    id: 1,
-    title: "The Girl on Pheta-3",
-    description: "A small interactive experience about sibling connection through games. Won the JADS Game Jam 2025 and Best Audio Category.",
-    technologies: [
-      { name: "Godot", purpose: "Game Engine" },
-      { name: "Blender", purpose: "3D Modeling & Animation" },
-      { name: "GDScript", purpose: "Game Logic Programming" },
-      { name: "Pixel Art", purpose: "Visual Design" }
-    ],
-    liveUrl: "https://iriyams.itch.io/the-girl-on-pheta-3",
-    featured: true
+const allProjects = [
+   { 
+    year: 2025, 
+    title: "Comparing Pathing Algorithms", 
+    type: "Personal Project",
+    status: "Completed",
+    description: "Created an interactive comparison of pathfinding algorithms with real-time visualization",
+    tech: ["Python, HTML, CSS, Javascript"],
+    link: "https://www.rachiecodes.com/pathing-algorithms/" 
+  },
+   { 
+    year: 2025, 
+    title: "Blog Aggregator", 
+    type: "Personal Project",
+    status: "Completed",
+    description: "Create an RSS (Really Simple Syndication) feed aggregator that collects blog posts from multiple sources and displays them in a unified interface.",
+    tech: ["Go"],
+    link: "https://github.com/RachieCodes/blogAggregator" 
+  },
+  { 
+    year: 2025, 
+    title: "AI Agent", 
+    type: "Personal Project",
+    status: "Completed",
+    description: "An AI-powered personal assistant that helps scan files in a directory, read the file's contents, and execute a python interpreter on the file.",
+    tech: ["Python", "Gemini"],
+    link: "https://github.com/RachieCodes/AI_Agent" 
+  },
+  { 
+    year: 2025, 
+    title: "Portfolio Website", 
+    type: "Personal Project",
+    status: "Completed",
+    description: "A responsive portfolio website showcasing development skills with a Fallout aesthetic. Features interactive elements, smooth animations, and a custom blog system.",
+    tech: ["React", "CSS3", "JavaScript", "Formspree"],
+    link: "https://rachiecodes.github.io" 
+  },
+  { 
+    year: 2025, 
+    title: "The Girl on Pheta-3", 
+    type: "Game Project",
+    status: "Completed",
+    description: "A small interactive experience about making connections through games. How the Team Game Jam 2024 and Best Audio Narratives influenced our approach to immersive environments and emotional storytelling.",
+    tech: ["Unity", "C#", "Game Engine", "Dialogue Systems", "Blender", "Game Logic Programming", "Pixel Art", "Visual Design"],
+    link: "https://iriyams.itch.io/the-girl-on-pheta-3" 
+  },
+  { 
+    year: 2024, 
+    title: "Paycom Blog Redesign", 
+    type: "Company Project",
+    status: "Completed",
+    description: "Complete redesign and development of Paycom's corporate blog platform. Improved user experience, load times, and content management workflows for better engagement.",
+    tech: ["WordPress", "PHP", "JavaScript", "CSS", "HTML"],
+    link: "https://www.paycom.com/resources/blog/workforce-management-software-features/" 
+  },
+  { 
+    year: 2024, 
+    title: "Paycom Demo Form", 
+    type: "Company Project",
+    status: "Completed",
+    description: "Redesigned and optimized the company's main demo request form. Implemented improved validation, user experience enhancements, and database integration for better lead capture.",
+    tech: ["WordPress", "PHP", "JavaScript", "CSS", "HTML", "SQL"],
+    link: "https://www.paycom.com/demo/" 
+  },
+    { 
+    year: 2021, 
+    title: "NLP Projects", 
+    type: "Academic Project",
+    status: "Completed",
+    description: "Projects for NLP coursework involving frequency distribution, Naive Bayes classification, neural networks, and text preprocessing techniques.",
+    tech: ["Python", "NLTK", "TensorFlow", "Jupyter Notebook"],
+    link: "https://github.com/RachieCodes/NLP" 
+  },
+  { 
+    year: 2021, 
+    title: "Lexical Analyzer", 
+    type: "Academic Project",
+    status: "Completed",
+    description: "A comprehensive lexical analyzer built for UNT coursework. Tokenizes source code in R and breaks it into tokens using JFlex.",
+    tech: ["Java", "R", "Flex"],
+    link: "https://github.com/rachiecodes/lexical-analyzer" 
   },
 ];
 
 const Projects = () => {
-  const [hoveredButton, setHoveredButton] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(allProjects[0]);
+  const [activeFilter, setActiveFilter] = useState("All");
+
+  const filters = ["All", "Academic Project", "Company Project", "Game Project", "Personal Project"];
+
+  const filteredProjects = activeFilter === "All" 
+    ? allProjects 
+    : allProjects.filter(project => project.type === activeFilter);
 
   return (
-    <div className="pipboy-main projects-main">
-      <div className="projects-container">
-        <div className="projects-header">
-          <h1>Some Things I've Built</h1>
-          <Link 
-            to="/projects/archive" 
-            className="btn-primary"
-            onMouseEnter={() => setHoveredButton('archive')}
-            onMouseLeave={() => setHoveredButton(null)}
+    <div className="pipboy-projects-archive">
+      <div className="archive-filters">
+        {filters.map(filter => (
+          <button
+            key={filter}
+            className={`filter-btn ${activeFilter === filter ? 'active' : ''}`}
+            onClick={() => setActiveFilter(filter)}
           >
-            <AnimatedText 
-              text="[ Access the Archive ]" 
-              isHovered={hoveredButton === 'archive'}
-            />
-          </Link>
+            {filter}
+          </button>
+        ))}
+      </div>
+
+      <div className="archive-content">
+        <div className="project-list-panel">
+          <h2>PROJECT LIST</h2>
+          <div className="project-list">
+            {filteredProjects.map((project, index) => (
+              <div
+                key={index}
+                className={`project-item ${selectedProject === project ? 'selected' : ''}`}
+                onClick={() => setSelectedProject(project)}
+              >
+                <div className="project-item-title">{project.title}</div>
+                <div className="project-item-meta">
+                  <span className="project-item-type">{project.type}</span>
+                  <span className="project-item-year">{project.year}</span>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {featuredProjects.length > 0 ? (
-          <div className="featured-projects">
-            {featuredProjects.map((project, index) => (
-              <a key={project.id} href={project.liveUrl || project.githubUrl} target="_blank" rel="noopener noreferrer" className="project-card-link">
-                <div className="project-card">
-                  <div className="project-content">
-                    <p className="project-featured">[Featured Project]</p>
-                    <h3 className="project-title">
-                      {project.title}
-                    </h3>
-                  <div className="project-description">
-                    <p>{project.description}</p>
-                  </div>
-                  <div className="project-tech-section">
-                    <h4 className="tech-label">Built with:</h4>
-                    <ul className="project-tech-list">
-                      {project.technologies.map((tech, i) => (
-                        <li key={i}>
-                          <span className="tech-name">{tech.name}</span>
-                          <span className="tech-purpose"> — {tech.purpose}</span>
-                        </li>
+        <div className="project-details-panel">
+          <h2>PROJECT DETAILS</h2>
+          {selectedProject && (
+            <div className="project-details">
+              <div className="detail-section">
+                <label>NAME:</label>
+                <div className="detail-value">{selectedProject.title}</div>
+              </div>
+              
+              <div className="detail-section">
+                <label>TYPE:</label>
+                <div className="detail-value">{selectedProject.type}</div>
+              </div>
+              
+              <div className="detail-section">
+                <label>YEAR:</label>
+                <div className="detail-value">{selectedProject.year}</div>
+              </div>
+              
+              <div className="detail-section">
+                <label>STATUS:</label>
+                <div className="detail-value">{selectedProject.status}</div>
+              </div>
+              
+              <div className="detail-section">
+                <label>DESCRIPTION:</label>
+                <div className="detail-value description-box">
+                  {selectedProject.description}
+                </div>
+              </div>
+              
+              <div className="detail-section">
+                <label>BUILT WITH:</label>
+                <div className="detail-value">
+                  {selectedProject.tech && selectedProject.tech.length > 0 ? (
+                    <ul className="tech-list">
+                      {selectedProject.tech.map((tech, i) => (
+                        <li key={i}>• {tech}</li>
                       ))}
                     </ul>
-                  </div>
-                  <div className="project-links">
-                    {project.githubUrl && (
-                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub Link">
-                        <i className="fab fa-github"></i>
-                      </a>
-                    )}
-                    {project.liveUrl && (
-                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label="External Link">
-                        <i className="fas fa-external-link-alt"></i>
-                      </a>
-                    )}
-                  </div>
-                  {project.stars && (
-                    <div className="project-stats">
-                      <i className="fas fa-star"></i> {project.stars}
-                    </div>
-                  )}
-                  {project.installs && (
-                    <div className="project-stats">
-                      <i className="fas fa-download"></i> {project.installs}
+                  ) : (
+                    <div className="tech-list">
+                      <li>• Information not available</li>
                     </div>
                   )}
                 </div>
               </div>
-              </a>
-            ))}
-          </div>
-        ) : (
-          <div className="no-projects">
-            <div className="terminal-loading">
-              <pre className="loading-text">
-                {`> STATUS: SCANNING FOR PROJECTS...
-                > LOCATION: GitHub Repositories
-                > 
-                > [████████████████████████████████] 100%
-                > 
-                > PROJECTS LOADED: ${featuredProjects.length}
-                > 
-                > [ MORE PROJECTS COMING SOON ]`}
-              </pre>
+
+              {selectedProject.link && (
+                <div className="detail-section">
+                  <a 
+                    href={selectedProject.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="project-link"
+                  >
+                    → View Project
+                  </a>
+                </div>
+              )}
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );
