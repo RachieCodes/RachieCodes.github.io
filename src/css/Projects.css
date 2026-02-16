@@ -276,8 +276,7 @@
     border-bottom: 1px solid var(--primary-color);
   }
   
-  .filter-btn:nth-child(3),
   .filter-btn:nth-child(5) {
-    border-right: none;
+    border-bottom: none;
   }
 }

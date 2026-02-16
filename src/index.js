@@ -8,7 +8,6 @@ import Projects from "./pages/Projects";
 import Skills from "./pages/Skills";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
-import Contact from "./pages/Contact";
 import Navbar from "./components/Navbar";
 import "./App.css";
 
@@ -31,7 +30,6 @@ root.render(
               <Route path="/skills" element={<Skills />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:id" element={<BlogPost />} />
-              <Route path="/contact" element={<Contact />} />
             </Routes>
           </main>
           <footer className="pipboy-footer" aria-label="Site Footer">
@@ -52,7 +50,7 @@ root.render(
                 <li>
                   <a
                     className="fa-icon"
-                    href="https://www.linkedin.com/in/rachel-johnson-484772172/"
+                    href="https://www.linkedin.com/in/rachel-johnson-codes/"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="LinkedIn"

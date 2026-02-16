@@ -105,7 +105,6 @@
   color: var(--terminal-text);
   font-family: 'VT323', monospace;
   font-size: 1rem;
-  line-height: 1.5;
 }
 
 .session-info {

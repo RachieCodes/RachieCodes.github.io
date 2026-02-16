@@ -115,8 +115,8 @@ const Home = () => {
 
       <div className="homepage" aria-hidden={showAnimation}>
         <pre className="terminal simple-terminal">
-{`> Status: ONLINE
-> Location: Secure Terminal`}
+{`> Role: Full Stack Developer
+> Location: Dallas, TX`}
         </pre>
         <div className="intro">
           <div className="name">
@@ -139,16 +139,17 @@ const Home = () => {
               />
             </a>
             <Link 
-              to="/contact" 
+              to="/about" 
               className="btn-primary"
-              onMouseEnter={() => setHoveredButton('contact')}
+              onMouseEnter={() => setHoveredButton('about')}
               onMouseLeave={() => setHoveredButton(null)}
             >
               <AnimatedText 
-                text="[ Contact Me ]" 
-                isHovered={hoveredButton === 'contact'}
+                text="[ About Me ]" 
+                isHovered={hoveredButton === 'about'}
               />
             </Link>
+
           </div>
         </div>
       </div>

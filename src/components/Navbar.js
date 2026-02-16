@@ -8,7 +8,6 @@ const navItems = [
   { to: "/projects", label: "Projects" },
   { to: "/skills", label: "Skills" },
   { to: "/blog", label: "Blog" },
-  { to: "/contact", label: "Contact" },
 ];
 
 function Navbar() {

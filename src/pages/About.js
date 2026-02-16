@@ -1,87 +1,78 @@
 
-import React, { useState } from "react";
+import React from "react";
 import photo from "../assets/stylized_photo.jpg";
 import "../css/About.css";
 
-const skills = [
-  {
-    name: "Origin Story",
-    desc: "Texas born and raised, I've always been passionate about science and technology. When I was young, I wanted to be an astronaut, but I quickly found out that I was afraid of heights. After seeing my Dad create something new on the computer, I knew I wanted to be a developer.",
-    img: photo,
-  },
-  {
-    name: "Long-Term Vision",
-    desc: "I want to craft user focused experiences and I want to learn as much as possible. I constantly strive to improve my skills and knowledge in web development, design, and user experience that blend creativity with robust functionality.",
-    img: photo,
-  },
-  {
-    name: "Inspiration",
-    desc: "I'm a huge Fallout, Nier, Final Fantasy, Dungeons&Dragons, Bioshock, and Super Mario fan. Just to name a few. I love the way these games tell stories and create immersive worlds. They inspire me to create my own unique experiences through web development and game development.",
-    img: photo,
-  },
-  {
-    name: "Areas of Expertise",
-    desc: "Software Development, Web Design, User Experience, Fullstack Development, Cybersecurity, Augmented Reality, Game Design, Large Language Models, Natural Language Processing, and more.",
-    img: photo,
-  },
-  {
-    name: "Our Princess is in Another Castle",
-    desc: "When I'm not coding, you can find me exploring the great outdoors, reading sci-fi or epic fantasy novels, thrifting, trying to find the best matcha, going to concerts, or playing video games. I love to travel and experience new cultures, and I often draw inspiration from my adventures for my projects.",
-    img: photo,
-  },
+const aboutContent = [
+  "Hi, I'm Rachel Johnson - a Full Stack Developer based out of Dallas, Texas. I like to learn new things and build innovative web applications.",
+  "I want to craft user focused experiences and I want to learn as much as possible. I constantly strive to improve my skills and knowledge in web development, design, and user experience that blend creativity with robust functionality.",
+  "I have been a fan of Final Fantasy, Dungeons&Dragons, Bioshock, and Super Mario Era. Just to name a few. I love the way these games tell stories and create immersive worlds. They inspire me to bring that same level of creativity and engagement to the applications I build.",
+  "When I'm not coding, you can find me exploring the great outdoors, reading sci-fi or epic fantasy novels, thrifting, trying to find the best matcha, going to concerts, or playing video games. I love to stay curious and keep learning!",
 ];
 
 const About = () => {
-  const [selected, setSelected] = useState(0);
-
   return (
     <div className="pipboy-container">
       <div className="noise-overlay"></div>
-      <div className="pipboy-crt-overlay pipboy-flicker"></div>
+      <div className="scanlines"></div>
+
       <div className="pipboy-content">
+        {/* LEFT PANEL */}
         <div className="pipboy-left-panel">
-          <div className="pipboy-name-bar">
-            Name: Rachel Johnson
-          </div>
+          <div className="pipboy-section-title">⊳ PERSONNEL FILE</div>
           
-          <div className="pipboy-menu-container">
-            <div className="pipboy-menu">
-              {skills.map((skill, i) => (
-                <div 
-                  key={skill.name + i}
-                  className={`pipboy-menu-item ${selected === i ? 'selected' : ''}`}
-                  onClick={() => setSelected(i)}
-                  tabIndex={0}
-                  onKeyDown={e => (e.key === "Enter" || e.key === " ") && setSelected(i)}
-                  role="button"
-                  aria-pressed={selected === i}
-                >
-                  {skill.name}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-        
-        <div className="pipboy-right-panel">
           <div className="pipboy-profile-image">
             <img 
-              src={skills[selected].img || vaultboy}
+              src={photo}
               alt="Profile" 
               className="profile-img"
             />
-            <div className="image-corner top-right"></div>
-            <div className="image-corner bottom-left"></div>
           </div>
-          
+
           <div className="pipboy-detail-container">
-            <div className="pipboy-detail-header">
-              <h2>{skills[selected].name}</h2>
+            <div className="detail-item">
+              <span className="detail-label">NAME:</span>
+              <span className="detail-value">Rachel Johnson</span>
             </div>
-            
-            <div className="pipboy-detail-content">
-              <p>{skills[selected].desc}</p>
+            <div className="detail-item">
+              <span className="detail-label">OCCUPATION:</span>
+              <span className="detail-value">Full Stack Developer</span>
             </div>
+            <div className="detail-item">
+              <span className="detail-label">LOCATION:</span>
+              <span className="detail-value">Dallas, Texas</span>
+            </div>
+            <div className="detail-item">
+              <span className="detail-label">STATUS:</span>
+              <span className="detail-value">Available for Hire</span>
+            </div>
+          </div>
+
+          <div className="contact-section">
+            <div className="contact-title">⊳ CONTACT</div>
+            <div className="contact-links">
+              <a href="mailto:RachieCodes@outlook.com" className="contact-link">
+                [Email]
+              </a>
+              <a href="https://www.linkedin.com/in/rachel-johnson-codes/" target="_blank" rel="noopener noreferrer" className="contact-link">
+                [LinkedIn]
+              </a>
+              <a href="https://github.com/RachieCodes" target="_blank" rel="noopener noreferrer" className="contact-link">
+                [GitHub]
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* RIGHT PANEL */}
+        <div className="pipboy-right-panel">
+          <div className="section-header">ABOUT ME</div>
+          <div className="about-text">
+            {aboutContent.map((text, i) => (
+              <p key={i}>
+                <span className="bullet">{'>'}</span> {text}
+              </p>
+            ))}
           </div>
         </div>
       </div>
