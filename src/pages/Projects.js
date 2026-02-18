@@ -12,7 +12,7 @@ const allProjects = [
     type: "Personal Project",
     status: "Completed",
     description: "Created a project management tool that allows users to create projects, add tasks, set deadlines, and track progress.",
-    tech: ["React, Node.js", "CSS3", "JavaScript", "HTML"],
+    tech: ["React, Node.js", "Tailwind CSS", "JavaScript", "HTML"],
     link: "https://github.com/RachieCodes/project-manage",
     video: taskManager,
   },
