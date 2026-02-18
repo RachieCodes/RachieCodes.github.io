@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/Projects.css";
 import taskManager from "../assets/videos/taskmanager.mp4";
+import Pheta from "../assets/videos/Pheta.mp4";
 
 
 const allProjects = [
@@ -50,10 +51,10 @@ const allProjects = [
     title: "The Girl on Pheta-3", 
     type: "Game Project",
     status: "Completed",
-    description: "A small interactive experience about making connections through games. How the Team Game Jam 2024 and Best Audio Narratives influenced our approach to immersive environments and emotional storytelling.",
+    description: "A small interactive experience about making connections through games. The team won the 1st at the JADS2025 GameJam and Best Audio.",
     tech: ["Unity", "C#", "Game Engine", "Dialogue Systems", "Blender", "Game Logic Programming", "Pixel Art", "Visual Design"],
     link: "https://iriyams.itch.io/the-girl-on-pheta-3",
-    video: null
+    video: Pheta
   },
   { 
     year: 2024, 
