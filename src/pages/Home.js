@@ -106,7 +106,7 @@ const Home = () => {
             {showPrompt && (
               <div className="terminal-line" style={{ marginTop: "1rem" }}>
                 <span>{`> `}</span>
-                <span className="cursor-blink"></span>
+                <span className="cursor-blink">█</span>
               </div>
             )}
           </div>

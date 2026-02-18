@@ -1,15 +1,29 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/Projects.css";
+import taskManager from "../assets/videos/taskmanager.mp4";
+
+
 const allProjects = [
-   { 
+   {
+    video: taskManager,
+    year: 2025, 
+    title: "Project Manager", 
+    type: "Personal Project",
+    status: "Completed",
+    description: "Created a project management tool that allows users to create projects, add tasks, set deadlines, and track progress.",
+    tech: ["React, Node.js", "CSS3", "JavaScript", "HTML"],
+    link: "https://github.com/RachieCodes/project-manage",
+  },
+  { 
     year: 2025, 
     title: "Blog Aggregator", 
     type: "Personal Project",
     status: "Completed",
     description: "Create an RSS (Really Simple Syndication) feed aggregator that collects blog posts from multiple sources and displays them in a unified interface.",
     tech: ["Go"],
-    link: "https://github.com/RachieCodes/blogAggregator" 
+    link: "https://github.com/RachieCodes/blogAggregator",
+    video: null
   },
   { 
     year: 2025, 
@@ -18,7 +32,8 @@ const allProjects = [
     status: "Completed",
     description: "An AI-powered personal assistant that helps scan files in a directory, read the file's contents, and execute a python interpreter on the file.",
     tech: ["Python", "Gemini"],
-    link: "https://github.com/RachieCodes/AI_Agent" 
+    link: "https://github.com/RachieCodes/AI_Agent",
+    video: null
   },
   { 
     year: 2025, 
@@ -27,7 +42,8 @@ const allProjects = [
     status: "Completed",
     description: "A responsive portfolio website showcasing development skills with a Fallout aesthetic. Features interactive elements, smooth animations, and a custom blog system.",
     tech: ["React", "CSS3", "JavaScript", "Formspree"],
-    link: "https://rachiecodes.github.io" 
+    link: "https://rachiecodes.github.io",
+    video: null
   },
   { 
     year: 2025, 
@@ -36,7 +52,8 @@ const allProjects = [
     status: "Completed",
     description: "A small interactive experience about making connections through games. How the Team Game Jam 2024 and Best Audio Narratives influenced our approach to immersive environments and emotional storytelling.",
     tech: ["Unity", "C#", "Game Engine", "Dialogue Systems", "Blender", "Game Logic Programming", "Pixel Art", "Visual Design"],
-    link: "https://iriyams.itch.io/the-girl-on-pheta-3" 
+    link: "https://iriyams.itch.io/the-girl-on-pheta-3",
+    video: null
   },
   { 
     year: 2024, 
@@ -45,7 +62,8 @@ const allProjects = [
     status: "Completed",
     description: "Complete redesign and development of Paycom's corporate blog platform. Improved user experience, load times, and content management workflows for better engagement.",
     tech: ["WordPress", "PHP", "JavaScript", "CSS", "HTML"],
-    link: "https://www.paycom.com/resources/blog/workforce-management-software-features/" 
+    link: "https://www.paycom.com/resources/blog/workforce-management-software-features/",
+    video: null
   },
   { 
     year: 2024, 
@@ -54,7 +72,8 @@ const allProjects = [
     status: "Completed",
     description: "Redesigned and optimized the company's main demo request form. Implemented improved validation, user experience enhancements, and database integration for better lead capture.",
     tech: ["WordPress", "PHP", "JavaScript", "CSS", "HTML", "SQL"],
-    link: "https://www.paycom.com/demo/" 
+    link: "https://www.paycom.com/demo/",
+    video: null
   },
     { 
     year: 2021, 
@@ -63,7 +82,8 @@ const allProjects = [
     status: "Completed",
     description: "Projects for NLP coursework involving frequency distribution, Naive Bayes classification, neural networks, and text preprocessing techniques.",
     tech: ["Python", "NLTK", "TensorFlow", "Jupyter Notebook"],
-    link: "https://github.com/RachieCodes/NLP" 
+    link: "https://github.com/RachieCodes/NLP",
+    video: null
   },
   { 
     year: 2021, 
@@ -72,7 +92,8 @@ const allProjects = [
     status: "Completed",
     description: "A comprehensive lexical analyzer built for UNT coursework. Tokenizes source code in R and breaks it into tokens using JFlex.",
     tech: ["Java", "R", "Flex"],
-    link: "https://github.com/rachiecodes/lexical-analyzer" 
+    link: "https://github.com/rachiecodes/lexical-analyzer",
+    video: null
   },
 ];
 
@@ -124,6 +145,17 @@ const Projects = () => {
           <h2>PROJECT DETAILS</h2>
           {selectedProject && (
             <div className="project-details">
+              {selectedProject.video && (
+                <div className="detail-section">
+                  <label>VIDEO:</label>
+                  <div className="video-container">
+                    <video controls autoPlay loop muted playsInline className="project-video">
+                      <source src={selectedProject.video} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+              )}
               <div className="detail-section">
                 <label>NAME:</label>
                 <div className="detail-value">{selectedProject.title}</div>
@@ -150,7 +182,7 @@ const Projects = () => {
                   {selectedProject.description}
                 </div>
               </div>
-              
+
               <div className="detail-section">
                 <label>BUILT WITH:</label>
                 <div className="detail-value">
