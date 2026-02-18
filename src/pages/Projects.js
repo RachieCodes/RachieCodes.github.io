@@ -6,14 +6,14 @@ import taskManager from "../assets/videos/taskmanager.mp4";
 
 const allProjects = [
    {
-    video: taskManager,
-    year: 2025, 
+    year: 2026, 
     title: "Project Manager", 
     type: "Personal Project",
     status: "Completed",
     description: "Created a project management tool that allows users to create projects, add tasks, set deadlines, and track progress.",
     tech: ["React, Node.js", "CSS3", "JavaScript", "HTML"],
     link: "https://github.com/RachieCodes/project-manage",
+    video: taskManager,
   },
   { 
     year: 2025, 
@@ -21,7 +21,7 @@ const allProjects = [
     type: "Personal Project",
     status: "Completed",
     description: "Create an RSS (Really Simple Syndication) feed aggregator that collects blog posts from multiple sources and displays them in a unified interface.",
-    tech: ["Go"],
+    tech: ["PostgreSQL", "Go"],
     link: "https://github.com/RachieCodes/blogAggregator",
     video: null
   },
